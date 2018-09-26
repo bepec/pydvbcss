@@ -387,7 +387,7 @@ class CIIClient(object):
         
     def _onConnectionClose(self, code, reason):
         self.connected=False
-        self.onDisconnected()
+        self.onDisconnected(code, reason)
             
     def _onProtocolError(self, msg):
         self.log.error("There was a protocol error: "+msg+". Continuing anyway.")
