@@ -259,9 +259,9 @@ class TSClientConnection(object):
             self.log.debug("Opening connection")
             try:
                 self._ws.connect()
-            except ConnectionError, e:
+            except ConnectionError as e:
                 raise e
-            except socket.error, e:
+            except socket.error as e:
                 raise ConnectionError()
 
     def disconnect(self, code=1001, reason=''):
@@ -312,7 +312,7 @@ class TSClientConnection(object):
             return
         try:
             ct = ControlTimestamp.unpack(msg.data)
-        except Exception, e:
+        except Exception as e:
             self.log.error(str(e))
             self.log.error("Unable to parse message. Was not a correctly formed Control Timestamp message? Message was: "+str(msg)+"\nContinuing anyway.\n")
             return

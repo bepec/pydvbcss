@@ -399,7 +399,7 @@ class TSServer(WSServerBase):
                 # waiting for a SetupData message
                 try:
                     setupData = SetupData.unpack(str(message))
-                except ValueError, e:
+                except ValueError as e:
                     self.log.info("Expected a valid SetupData message, but got this instead: "+str(message))
                     return
                 connection["setup"] = setupData
@@ -424,7 +424,7 @@ class TSServer(WSServerBase):
                 # expect AptEptLpt message
                 try:
                     aptEptLpt = AptEptLpt.unpack(str(message))
-                except ValueError, e:
+                except ValueError as e:
                     self.log.info("Expected a valid AptEptLpt message, but got this instead: "+str(message))
                     return
                 connection["aptEptLpt"] = aptEptLpt

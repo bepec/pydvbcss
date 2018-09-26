@@ -244,7 +244,7 @@ class WSServerBase(object):
                 try:
                     self.onClientConnect(webSock)
 
-                except Exception, e:
+                except Exception as e:
                     self.log.error(str(e))
                     print str(e)
 

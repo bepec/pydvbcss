@@ -221,9 +221,9 @@ class CIIClientConnection(object):
             self.log.debug("Opening connection")
             try:
                 self._ws.connect()
-            except ConnectionError, e:
+            except ConnectionError as e:
                 raise e
-            except socket.error, e:
+            except socket.error as e:
                 raise ConnectionError()
 
     def disconnect(self, code=1001, reason=''):
@@ -261,7 +261,7 @@ class CIIClientConnection(object):
             return
         try:
             cii = CII.unpack(msg.data)
-        except Exception,e:
+        except Exception as e:
             self._ws_on_error("Protocol error - message received could not be parsed as a CII message: "+str(msg)+". Continuing anyway. Cause was: "+str(e)+"\n")
             return
         self.onCII(cii)

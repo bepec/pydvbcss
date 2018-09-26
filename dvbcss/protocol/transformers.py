@@ -44,7 +44,7 @@ def encodeOneOf(value, errMsg, *transformers):
     for t in transformers:
         try:
             return t.encode(value)
-        except Exception, e:
+        except Exception as e:
             pass
     raise ValueError(errMsg+" Value: "+str(value)+"\nCause: "+str(e))
 
@@ -268,7 +268,7 @@ class Transformer(object):
                 for item in value:
                     Transformer.uriString.decode(item["type"])
                 return value
-            except (ValueError, KeyError), e:
+            except (ValueError, KeyError) as e:
                 raise ValueError("Not a valid private structure:"+str(e))
         
         encode=decode
