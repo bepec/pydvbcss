@@ -311,7 +311,7 @@ class TSClientConnection(object):
             self._ws_on_error("Protocol error - message received was not a text frame")
             return
         try:
-            ct = ControlTimestamp.unpack(msg.data)
+            ct = ControlTimestamp.unpack(msg.data.decode("ascii"))
         except Exception as e:
             self.log.error(str(e))
             self.log.error("Unable to parse message. Was not a correctly formed Control Timestamp message? Message was: "+str(msg)+"\nContinuing anyway.\n")
